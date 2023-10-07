@@ -11,11 +11,11 @@
 | fast_name_kanji        | string  | null: false              |
 | last_name_kana         | string  | null: false              |
 | fast_name_kana         | string  | null: false              |
-| birth_year             | integer | null: false              |
-| birth_month            | integer | null: false              |
-| birth_day              | integer | null: false              |
+| birth_day              | date    | null: false              |
+
 
 ### Association
+
 - has_many :items
 - has_many :buys
 
@@ -25,11 +25,11 @@
 | ---------------------- | ---------- | ------------------------------ |
 | name                   | string     | null: false                    |
 | description            | text       | null: false                    |
-| category               | string     | null: false                    |
-| condition              | string     | null: false                    |
-| postage                | string     | null: false                    |
-| region                 | string     | null: false                    |
-| until_shipping         | string     | null: false                    |
+| category               | integer    | null: false                    |
+| condition              | integer    | null: false                    |
+| postage                | integer    | null: false                    |
+| region                 | integer    | null: false                    |
+| until_shipping         | integer    | null: false                    |
 | price                  | integer    | null: false                    |
 | sold_out               | boolean    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
@@ -38,6 +38,11 @@
 
 - belongs_to :user
 - has_one    :buy
+- belongs_to :category
+- belongs_to :condition
+- belongs_to :postage
+- belongs_to :region
+- belongs_to :until_shipping
 
 ## buys テーブル
 
@@ -47,6 +52,7 @@
 | item                   | references | null: false, foreign_key: true |
 
 ### Association
+
 - belongs_to :user
 - belongs_to :item
 - has_one    :shipping
@@ -60,9 +66,10 @@
 | municipality           | string     | null: false                    |
 | street_address         | string     | null: false                    |
 | building_name          | string     | null: true                     |
-| phone                  | integer    | null: false                    |
+| phone                  | string     | null: false                    |
 | buy                    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :buy
+- belongs_to :prefecture
