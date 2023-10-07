@@ -25,11 +25,11 @@
 | ---------------------- | ---------- | ------------------------------ |
 | name                   | string     | null: false                    |
 | description            | text       | null: false                    |
-| category               | integer    | null: false                    |
-| condition              | integer    | null: false                    |
-| postage                | integer    | null: false                    |
-| region                 | integer    | null: false                    |
-| until_shipping         | integer    | null: false                    |
+| category_id            | integer    | null: false                    |
+| condition_id           | integer    | null: false                    |
+| postage_id             | integer    | null: false                    |
+| region_id              | integer    | null: false                    |
+| until_shipping_id      | integer    | null: false                    |
 | price                  | integer    | null: false                    |
 | sold_out               | boolean    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
@@ -62,7 +62,7 @@
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | post_code              | string     | null: false                    |
-| prefectures            | string     | null: false                    |
+| region_id              | integer    | null: false                    |
 | municipality           | string     | null: false                    |
 | street_address         | string     | null: false                    |
 | building_name          | string     | null: true                     |
@@ -72,4 +72,3 @@
 ### Association
 
 - belongs_to :buy
-- belongs_to :prefecture
