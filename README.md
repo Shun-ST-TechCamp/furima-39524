@@ -31,7 +31,6 @@
 | region_id              | integer    | null: false                    |
 | until_shipping_id      | integer    | null: false                    |
 | price                  | integer    | null: false                    |
-| sold_out               | boolean    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 
 ### Association
