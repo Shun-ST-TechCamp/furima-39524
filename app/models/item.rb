@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :postage
   belongs_to :region
   belongs_to :until_shipping
+  has_one_attached :image
 
   validates :name,                presence: true
   validates :description,         presence: true
