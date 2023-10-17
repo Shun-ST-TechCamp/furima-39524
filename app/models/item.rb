@@ -4,8 +4,6 @@ class Item < ApplicationRecord
   validates :price,               presence: true,
                                   inclusion: { in: 300..9999999, message: "is out of setting range" },
                                   numericality: {only_integer: true, message: "is invalid. Input half-width characters"}
-                                  
-
   validates :image,               presence: true
 
   def was_attached?
