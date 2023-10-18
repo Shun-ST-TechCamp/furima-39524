@@ -14,49 +14,49 @@ RSpec.describe Item, type: :model do
 
     context '新規登録できない場合' do
       it 'nameが空では登録できない' do
-        @item.name =''
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it 'descriptionが空では登録できない' do
-        @item.description =''
+        @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'category_idが空では登録できない' do
-        @item.category_id =''
+        @item.category_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'condition_idが空では登録できない' do
-        @item.condition_id =''
+        @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it 'postage_idが空では登録できない' do
-        @item.postage_id =''
+        @item.postage_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage can't be blank")
       end
       it 'region_idが空では登録できない' do
-        @item.region_id =''
+        @item.region_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Region can't be blank")
       end
       it 'until_shipping_idが空では登録できない' do
-        @item.until_shipping_id =''
+        @item.until_shipping_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Until shipping can't be blank")
       end
       it 'priceが空では登録できない' do
-        @item.price =''
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'userが紐づいていないと登録できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
       it 'imageが空では登録できない' do
         @item.image = nil
@@ -64,47 +64,47 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'priceが大文字では登録できない' do
-        @item.price ='５００'
+        @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters')
       end
       it 'priceに文字が入っていると登録できない' do
-        @item.price ='5a00'
+        @item.price = '5a00'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters')
       end
-        it 'priceが300未満では登録できない'do
-        @item.price ='100'
+      it 'priceが300未満では登録できない' do
+        @item.price = '100'
         @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
-        it 'priceが10000000以上だと登録できない' do
-        @item.price ='10000000'
+      it 'priceが10000000以上だと登録できない' do
+        @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'category_idが1では登録できない' do
-        @item.category_id ='1'
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'condition_idが1では登録できない' do
-        @item.condition_id ='1'
+        @item.condition_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it 'postage_idが1では登録できない' do
-        @item.postage_id ='1'
+        @item.postage_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage can't be blank")
       end
       it 'region_idが1だと登録できない' do
-        @item.region_id ='1'
+        @item.region_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Region can't be blank")
       end
       it 'until_shipping_idが1だと登録できない' do
-        @item.until_shipping_id ='1'
+        @item.until_shipping_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Until shipping can't be blank")
       end
