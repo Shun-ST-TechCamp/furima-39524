@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   def item_user
     @current_user_items = current_user.items
     @current_user_item  = @current_user_items.find_by(id: params[:id])
-    redirect_to item_path unless @current_user_item
+    redirect_to root_path unless @current_user_item
   end
 
 end
