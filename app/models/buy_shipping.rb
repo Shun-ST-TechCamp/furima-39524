@@ -1,6 +1,6 @@
 class BuyShipping
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :region_id, :municipality, :street_address, :building_name, :phone 
+  attr_accessor :user_id, :item_id, :post_code, :region_id, :municipality, :street_address, :building_name, :phone, :token
 
   with_options presence: true do
     validates :user_id
