@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.includes(:buy).order('created_at DESC')
- 
   end
 
   def new
@@ -24,6 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.sold?
+      redirect_to root_path
+    else
+    end
   end
 
   def update
