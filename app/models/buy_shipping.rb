@@ -12,7 +12,7 @@ class BuyShipping
                                  format: {with: /\A\d{10,11}\z/,message: "is too short"}
   end
 
-  validates :region_id,        numericality: {other_than: 0, message: "can't be blank"}
+  validates :region_id,        numericality: {other_than: 1, message: "can't be blank"}
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
 
