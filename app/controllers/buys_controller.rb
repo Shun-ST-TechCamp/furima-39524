@@ -1,6 +1,7 @@
 class BuysController < ApplicationController
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @buy_shipping = BuyShipping.new
     @item = Item.find(params[:item_id])
   end
