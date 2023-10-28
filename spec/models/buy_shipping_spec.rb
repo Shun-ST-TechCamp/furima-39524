@@ -28,16 +28,16 @@ RSpec.describe BuyShipping, type: :model do
       end
 
       it 'post_codeが3桁ハイフン4桁でないと登録できない' do
-        @buy_shipping.post_code ='123456'
+        @buy_shipping.post_code = '123456'
         @buy_shipping.valid?
-        expect(@buy_shipping.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@buy_shipping.errors.full_messages).to include('Post code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'post_codeが半角文字列でないと登録できない' do
-        @buy_shipping.post_code = "１２３-４５６"
+        @buy_shipping.post_code = '１２３-４５６'
         @buy_shipping.valid?
-        expect(@buy_shipping.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@buy_shipping.errors.full_messages).to include('Post code is invalid. Enter it as follows (e.g. 123-4567)')
       end
-      
+
       it 'municipalityが空だと登録できない' do
         @buy_shipping.municipality = ''
         @buy_shipping.valid?
@@ -59,25 +59,25 @@ RSpec.describe BuyShipping, type: :model do
       it 'phoneが数字のみでないと登録できない' do
         @buy_shipping.phone = '0801111-111'
         @buy_shipping.valid?
-        expect(@buy_shipping.errors.full_messages).to include("Phone is invalid. Input only number")
+        expect(@buy_shipping.errors.full_messages).to include('Phone is invalid. Input only number')
       end
 
       it 'phoneが9文字以下だと登録できない' do
         @buy_shipping.phone = '123456789'
         @buy_shipping.valid?
-        expect(@buy_shipping.errors.full_messages).to include("Phone is too short")
+        expect(@buy_shipping.errors.full_messages).to include('Phone is too short')
       end
 
       it 'phoneが12文字以上だと登録できない' do
         @buy_shipping.phone = '123456789012'
         @buy_shipping.valid?
-        expect(@buy_shipping.errors.full_messages).to include("Phone is too short")
+        expect(@buy_shipping.errors.full_messages).to include('Phone is too short')
       end
 
       it 'phoneが半角数値のみでないと保存できない' do
-        @buy_shipping.phone = "０８０１１１１１１１１"
+        @buy_shipping.phone = '０８０１１１１１１１１'
         @buy_shipping.valid?
-        expect(@buy_shipping.errors.full_messages).to include("Phone is invalid. Input only number")
+        expect(@buy_shipping.errors.full_messages).to include('Phone is invalid. Input only number')
       end
 
       it 'region_idが1だと登録できない' do
@@ -98,10 +98,10 @@ RSpec.describe BuyShipping, type: :model do
         expect(@buy_shipping.errors.full_messages).to include("Item can't be blank")
       end
 
-        it 'tokenが空だと登録できない' do
-          @buy_shipping.token = nil
-          @buy_shipping.valid?
-          expect(@buy_shipping.errors.full_messages).to include("Token can't be blank")
+      it 'tokenが空だと登録できない' do
+        @buy_shipping.token = nil
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Token can't be blank")
       end
     end
   end

@@ -30,6 +30,4 @@ class Item < ApplicationRecord
   def sold?
     buy.present?
   end
-
 end
-
