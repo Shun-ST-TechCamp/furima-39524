@@ -1,8 +1,13 @@
 class BuysController < ApplicationController
   def index
+    @item = Item.find(params[:item_id])
+    if @item.sold?
+      redirect_to root_path
+      return
+    end
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @buy_shipping = BuyShipping.new
-    @item = Item.find(params[:item_id])
+    
   end
 
   def create
