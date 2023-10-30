@@ -16,7 +16,7 @@ class BuysController < ApplicationController
     if @buy_shipping.valid?
       pay_item
       @buy_shipping.save
-      redirect_to root_path
+      return redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class BuysController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
+      amount: @item.price,  
       card: buy_params[:token],
       currency: 'jpy'
     )
