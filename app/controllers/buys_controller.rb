@@ -3,13 +3,12 @@ class BuysController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if @item.sold? 
+    if @item.sold?
       redirect_to root_path
       return
     end
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @buy_shipping = BuyShipping.new
-    
   end
 
   def create

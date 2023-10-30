@@ -23,9 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.sold?
-      redirect_to root_path
-    end
+    return unless @item.sold?
+
+    redirect_to root_path
   end
 
   def update
