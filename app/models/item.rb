@@ -12,6 +12,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_one :buy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -25,4 +26,8 @@ class Item < ApplicationRecord
   validates :postage_id,          numericality: { other_than: 1, message: "can't be blank" }
   validates :region_id,           numericality: { other_than: 1, message: "can't be blank" }
   validates :until_shipping_id,   numericality: { other_than: 1, message: "can't be blank" }
+
+  def sold?
+    buy.present?
+  end
 end

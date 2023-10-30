@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :item_user, only: [:edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
-    @items = Item.order('created_at DESC')
+    @items = Item.includes(:buy).order('created_at DESC')
   end
 
   def new
@@ -23,6 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return unless @item.sold?
+
+    redirect_to root_path
   end
 
   def update
